@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   get 'pages/home'
-  devise_for :users
+  resources :messages, only: [:create, :destroy]
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
